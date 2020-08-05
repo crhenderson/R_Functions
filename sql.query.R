@@ -13,16 +13,16 @@ sql.query <- function(filename, odbc.connection.name, silent = TRUE) {
   }
   
   #call RODBC Package
-  suppressMessages(require(RODBC))
+  ## suppressMessages(require(RODBC))  # Removed this part.
   
   #Connect to ODBC connection specified
-  obdc.con <- odbcConnect(odbc.connection.name)
+  obdc.con <- RODBC::odbcConnect(odbc.connection.name)
   
   #Query odbc connection
-  data <- sqlQuery(obdc.con,q)
+  data <- RODBC::sqlQuery(obdc.con,q)
   
   #Close odbc connection
-  close(obdc.con)
+  RODBC::close(obdc.con)
   
   #return resulting dataset
   return(data)
