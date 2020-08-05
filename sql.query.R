@@ -22,7 +22,7 @@ sql.query <- function(filename, odbc.connection.name, silent = TRUE) {
   data <- RODBC::sqlQuery(obdc.con,q)
   
   #Close odbc connection
-  RODBC::close(obdc.con)
+  close(obdc.con)
   
   #return resulting dataset
   return(data)
