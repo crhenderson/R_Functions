@@ -1,7 +1,7 @@
 sql.query <- function(filename, odbc.connection.name, silent = TRUE) {
   #Read SQL File
   #Found here: http://stackoverflow.com/a/21344426
-  q <- readLines(filename, warn = !silent)
+  q <- scan(filename, what = 'character', fileEncoding = "UTF-16", sep="\n")
   q <- q[!grepl(pattern = "^\\s*--", x = q)] # remove full-line comments
   q <- sub(pattern = "--.*", replacement="", x = q) # remove midline comments
   q <- paste(q, collapse = " ")
